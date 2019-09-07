@@ -1,18 +1,33 @@
+#默认的启动方式 dev
 spring:
-  application:
-    name: iToken-eureka
-  #被zipkin追踪加的配置
-  zipkin:
-    base-url: http://localhost:9411
+  cloud:
+    config:
+      #路径有问题会报错 最好直接复制浏览器的路径过来
+      uri: http://localhost:8888/
+      #云端配置文件的名字
+      name: iToken-eureka
+      label: master
+      #开发阶段的profile(测试阶段test,发布阶段：prod)
+      profile: dev
 
-server:
-  port: 8762
 
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+
+#spring:
+#  application:
+#    name: hello-spring-cloud-eureka
+#  #被zipkin追踪加的配置
+#  zipkin:
+#    base-url: http://localhost:9411
+#
+#server:
+#  port: 8762
+#
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+#    serviceUrl:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
